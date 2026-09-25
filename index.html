@@ -12,14 +12,19 @@
       try {
         await liff.init({ liffId: "2011739724-q0xB1N1j" });
 
+        if (!liff.isLoggedIn()) {
+          liff.login();
+          return;
+        }
+
         if (liff.isInClient()) {
           await liff.sendMessages([{ type: 'text', text: '我是gay' }]);
           liff.closeWindow();
         } else {
-          alert("請在 LINE 聊天室內開啟此連結！");
+          alert("請在 LINE 聊天室內開啟！");
         }
       } catch (error) {
-        alert("錯誤訊息：" + error.message);
+        alert("錯誤詳細資訊：" + error.message);
       }
     }
     main();
