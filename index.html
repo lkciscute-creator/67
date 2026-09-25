@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto Send</title>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+  <script>
+    async function main() {
+      // 請替換為您的 LIFF ID (例如：2002197923-oyY6wJ68)
+      await liff.init({ liffId: "2011739724-qOxBlNlj" });
+
+      if (liff.isInClient()) {
+        try {
+          await liff.sendMessages([{ type: 'text', text: '我是gay' }]);
+          liff.closeWindow();
+        } catch (error) {
+          console.error("發送失敗：", error);
+        }
+      } else {
+        alert("請在 LINE 聊天室內開啟此連結");
+      }
+    }
+    main();
+  </script>
+</body>
+</html>
